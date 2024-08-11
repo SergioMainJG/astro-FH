@@ -1,0 +1,16 @@
+---
+import CustomTitle from "../components/CustomTitle.astro";
+import MainLayouts from "../layouts/MainLayouts.astro";
+
+---
+<MainLayouts title="About Page">
+    <CustomTitle title="This is a custom title" />
+    <h1>Soy Sergio Arce</h1>
+    <p>Soy programador y desarrollador de aplicaciones web</p>
+</MainLayouts>
+
+<style is:inline>
+    h1{
+        color: red;
+    }
+</style>
