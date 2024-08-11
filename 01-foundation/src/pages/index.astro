@@ -1,0 +1,27 @@
+---
+import MainLayouts from "../layouts/MainLayouts.astro";
+
+// server only
+const name 	= "Sergio Elias Arce Roldán";
+const title = "Home Page";
+---
+<MainLayouts title="Home Page">
+	<body>
+		<h1>Astro</h1>
+		<h1>{name}</h1>
+		<a href="./about">about</a>
+		<p id="moment"> Momento actual: { new Date().toLocaleTimeString() } </p>
+		<script>
+			const actualMoment: string = new Date().toLocaleTimeString();
+			const paragraph = document.getElementById("moment") as HTMLElement;
+			paragraph.innerText = `Momento Actual : ${ actualMoment }`;
+			</script>
+	<footer>2021</footer>
+	<script>
+		const currentYear: number = new Date().getFullYear();
+		
+		const footer = document.querySelector('footer') as HTMLElement;
+		footer.innerText = `Current Year: ${currentYear}`;
+	</script>
+	</body>
+</MainLayouts>
