@@ -1,16 +1,16 @@
 ---
-
+import MainLayout from '../layouts/MainLayout.astro';
+const title = 'Sergio Elias Arce Roldán';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<MainLayout title=`Home - ${title}`>
+    <h1>¡Hola! Soy {title}</h1>
+    <img src="" alt="mi foto ajaj">
+    <br />
+    <br />
+    <br />
+    <br />
+    <p>
+        Est aliqua ut in est irure ipsum adipisicing ipsum minim aute occaecat incididunt non. In duis nulla officia nulla incididunt dolor enim. Ullamco officia minim ea ex ut nostrud do labore esse non id est est. Duis aute est exercitation esse duis ullamco anim est ullamco occaecat tempor est excepteur laborum. Est commodo culpa irure sint fugiat nostrud reprehenderit est esse quis nostrud occaecat aliquip qui.
+    </p>
+</MainLayout>

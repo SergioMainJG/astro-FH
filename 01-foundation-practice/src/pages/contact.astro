@@ -1,0 +1,27 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+const title = 'Contacto';
+---
+
+<MainLayout title={title}>
+    <h1>{title}</h1>
+    <ul>
+        <li> Correo: <a target="_blank" href="mailto:arce.roldan.sergio@gmail.com">arce.roldan.sergio@gmail.com</a> </li>
+        <li> Github: <a target="_blank" href="https://github.com/SergioMainJG">SergioMainJG</a> </li>
+        <li> Facebook: <a target="_blank" href="https://www.facebook.com/ElEsposoDeLaPoderosaXayah/">Sergio Quaso AR</a> </li>
+        <li> Linkedin: <a target="_blank" href="https://www.linkedin.com/in/arce-rold%C3%A1n-sergio-el%C3%ADas/"> Sergio Elias Arce Roldán</a> </li>
+    </ul>
+</MainLayout>
+
+<style>
+    a{
+        text-decoration: none;
+        color: rgb(0, 3, 199);
+    }
+    ul{
+        list-style-type: none;
+    }
+    li a:hover{
+        background-color: rgba(132, 0, 255, 0.342);
+    }
+</style>
