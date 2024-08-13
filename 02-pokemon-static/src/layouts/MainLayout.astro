@@ -1,0 +1,41 @@
+---
+import { ViewTransitions }from 'astro:transitions';
+import { siteInfo } from '@site';
+interface Props{
+    title?:  	  string;
+	image?: 	  string;
+	description?: string;
+}
+
+const { 
+	title = siteInfo.title,
+	description = siteInfo.description, 
+	image} = Astro.props;
+---
+
+
+<html lang="es" >
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description} />
+		<meta name="author" content='Sergio E. Arce Roldán' />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={image} />
+		<title>{title}</title>
+		<ViewTransitions />
+		<!-- <style>
+  			@view-transition {
+  			  navigation: auto; /* enabled! */
+  			}
+		</style> -->
+	</head>
+	<body class="bg-slate-800 text-slate-100 m-auto max-w-3xl" >
+        <main class="mt-10">
+            <slot/>
+        </main>
+	</body>
+</html>
