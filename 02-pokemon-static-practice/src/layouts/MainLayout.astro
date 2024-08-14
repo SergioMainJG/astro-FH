@@ -1,0 +1,38 @@
+---
+interface Props{
+    title: string;
+}
+
+const { title } = Astro.props;
+
+---
+
+
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{ title }</title>
+	</head>
+	<body class="mainLayout">
+		<header class="mainHeader">
+			<ul>
+				<li><h1> - Nasa - </h1></li>
+				<li><h1> - Astro - </h1></li>
+				<li><h1> - Sergio Arce- </h1></li>
+			</ul>
+		</header>
+		<slot />
+	</body>
+</html>
+
+<style>
+	.mainLayout{
+		background-color: #172554;
+	}
+	.mainHeader{
+		background-color: ##bfdbfe;
+	}
+</style>
