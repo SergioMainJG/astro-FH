@@ -1,6 +1,8 @@
 ---
 import type { GetStaticPaths } from 'astro';
 
+import Title from '@components/shared/Title.astro';
+
 import PokemonCard from '@components/pokemons/PokemonCard.astro';
 import type { PokemonListResponse } from '@interfaces/pokemon-list.response';
 
@@ -26,11 +28,14 @@ const { page } = Astro.props;
 <MainLayout title={title}>
     <!-- <h1 class="text-3xl text-blue-500">Astro</h1> -->
     <!-- <hr /> -->
-    <h1 class="text-3xl">Listado Pokémons</h1>
-    <hr />
+    <!-- <h1 class="text-3xl">Listado Pokémons</h1> -->
+    <!-- <hr /> -->
+    <Title>
+        Listado Páginado de Pokemons
+    </Title>
     <section
         aria-label="Listado de Pokémons"
-        class="grid grid-cols-1 sm:grid-cols-4 md:grid-cols-5 gap-4 mt-5"
+        class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-4 mt-5"
     >
     {
         page.data.map(( { name, url}) => (

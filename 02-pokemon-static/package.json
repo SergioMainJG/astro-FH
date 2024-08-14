@@ -10,10 +10,12 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.2",
+    "@astrojs/check": "^0.7.0",
+    "@astrojs/solid-js": "^4.4.1",
     "@astrojs/tailwind": "^5.1.0",
-    "astro": "^4.13.3",
-    "tailwindcss": "^3.4.9",
-    "typescript": "^5.5.4"
+    "astro": "^4.10.2",
+    "solid-js": "^1.8.21",
+    "tailwindcss": "^3.4.4",
+    "typescript": "^5.4.5"
   }
 }
