@@ -8,6 +8,8 @@
       "@interfaces/*": ["./src/interfaces/*"],
       "@pages/*": ["./src/pages/*"],
       "@site": ["./src/consts/site-info.ts"],
-    }
+    },
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js"
   }
 }
