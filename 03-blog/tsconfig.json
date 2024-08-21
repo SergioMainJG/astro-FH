@@ -1,0 +1,15 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@MainLayout" :      ["src/layouts/MainLayout.astro"], 
+      "@BlogLayout" :      ["src/layouts/BlogLayout.astro"], 
+      "@layouts/*" :       ["src/layouts/*"],
+      "@components/*" :    ["src/components/*"],
+      "@SiteConfig" :      ["src/config/site-config.ts"],
+      "@utils/*" :         ["src/utils/*"],
+      "@images/*" :        ["src/asssets/images/*"],
+    }
+  }
+}
