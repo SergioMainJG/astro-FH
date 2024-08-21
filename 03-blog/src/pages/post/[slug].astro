@@ -5,6 +5,9 @@ import { getCollection } from "astro:content";
 import MainTitles from "@components/MainTitles.astro";
 import Paragraphs from "@components/Paragraphs.astro";
 import { Image } from "astro:assets";
+import { getEntry } from "astro:content";
+import SecondaryTitles from "@components/SecondaryTitles.astro";
+import { Formatter } from "@utils/formatter";
 
 export const getStaticPaths = ( async () => {
     const posts = await getCollection('blog');
@@ -13,22 +16,40 @@ export const getStaticPaths = ( async () => {
         params: { slug: post.slug },
         props:  { post: post }
     }));
-    // return [
-    //     {
-    //         params: { slug:  'post-01'},
-    //         props:  { title: 'Primer Post'},
-    //     }
-    // ];
 }) satisfies GetStaticPaths;
+
 const { post } = Astro.props;
 const frontmatter = post.data;
 
 const { Content, headings } = await post.render();
-
+const author = (await getEntry('author', post.data.author.id )).data;
 ---
 <BlogLayout title={ frontmatter.title } >
-    <!-- <MainTitles> { frontmatter.title } </MainTitles> -->
-    <MainTitles> { frontmatter.author } </MainTitles>
+    <MainTitles> { frontmatter.title } </MainTitles>
+    <!-- <SecondaryTitles> { frontmatter.author } </SecondaryTitles> -->
+    <div
+        class="text-md text-gray-400 mb-0 flex flex-row mt-2"
+    >
+        <Image
+            class="rounded-full"
+            width ={90}
+            height={90}
+            src={author.avatar}
+            alt={author.name}
+        />
+        <div
+            class="flex flex-col ml-5"
+        >   
+            <SecondaryTitles>
+                <a href={`/blog/${frontmatter.author.id}`}>{ author.name }</a>
+            </SecondaryTitles>
+            <span
+                class="text-xs text-gray-200"
+            >
+            { Formatter.formatDate( frontmatter.date ) }
+            </span>
+        </div>
+    </div>
     <Paragraphs> { frontmatter.description } </Paragraphs>
 
     <!-- Image -->
