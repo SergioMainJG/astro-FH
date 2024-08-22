@@ -6,6 +6,7 @@ import type { GetStaticPaths } from "astro";
 
 import MainLayout from '../../layouts/MainLayout.astro';
 import TypeBlogPost from "@components/TypeBlogPost.astro";
+import { siteConfig } from "@SiteConfig";
 
 export const getStaticPaths = ( async ({ paginate }) => {
     const posts = await getCollection('blog');
@@ -18,8 +19,20 @@ const { page } = Astro.props;
 <MainLayout>
   <div class="py-10 mx-auto">
     <h1 class="text-3xl font-semibold capitalize lg:text-4xl text-white">
-        Sergios's Blog paginado
+        { siteConfig.title } paginado
     </h1>
+    <a
+      class="bg-gray-900 text-blue-500 mx-2 hover:underline "
+      href="/"
+    >
+      Regresar
+    </a>
+    <a 
+    class="bg-gray-900 text-blue-500 mx-2 hover:underline"
+      href="/authors"
+    >
+      Autores
+    </a>
   </div>
 
   <section class="bg-gray-900" aria-label="Entradas de blog">
@@ -50,7 +63,7 @@ const { page } = Astro.props;
 
 <style>
   a {
-    @apply bg-blue-500 text-white p-2 rounded hover:bg-blue-600 cursor-pointer;
+    @apply text-white p-2 rounded hover:bg-blue-600 cursor-pointer;
   }
 
   .disabled {

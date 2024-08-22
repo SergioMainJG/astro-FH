@@ -5,6 +5,7 @@ import MainLayout from '@MainLayout';
 import { Image } from 'astro:assets';
 import { getCollection } from "astro:content";
 import TypeBlogPost from '@components/TypeBlogPost.astro';
+import MainTitles from "@components/MainTitles.astro";
 
 export const getStaticPaths = ( async () => {
     const blogPosts = await getCollection('blog');
@@ -27,7 +28,16 @@ const { blogPosts, author } = Astro.props;
             <h1 class="text-3xl font-semibold capitalize lg:text-4xl text-white">
                 {siteConfig.title}
             </h1>
-            <a href="/">Regresar</a>
+            <a 
+              href="/"
+            >
+              Regresar
+            </a>
+            <a 
+              href="/authors"
+            >
+              Autores
+            </a>
             
       <div class="text-md text-gray-400 mb-0 flex flex-row mt-2">
         <Image
@@ -39,7 +49,7 @@ const { blogPosts, author } = Astro.props;
         />
 
         <div class="flex flex-col ml-5">
-          <a>{author.name}</a>
+          <MainTitles>{author.name}</MainTitles>
           <span>Listado de todos mis posts</span>
         </div>
       </div>
@@ -53,6 +63,6 @@ const { blogPosts, author } = Astro.props;
 
 <style is:global>
   a {
-    @apply text-blue-500 hover:underline;
+    @apply text-blue-500 mx-2 hover:underline;
   }
 </style>

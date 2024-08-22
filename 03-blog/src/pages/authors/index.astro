@@ -1,11 +1,16 @@
 ---
+
+import AuthorCard from "@components/AuthorCard.astro";
 import MainTitles from "@components/MainTitles.astro";
 import MainLayout from "@MainLayout";
-import { siteConfig } from "@SiteConfig";
 
+
+import { siteConfig } from "@SiteConfig";
+import { getCollection } from "astro:content";
+
+const authors = await getCollection('author');
 
 ---
-
 <MainLayout title="Listado de autores">
     <section 
         class="container px-6 py-10 mx-auto"
@@ -13,30 +18,33 @@ import { siteConfig } from "@SiteConfig";
         <MainTitles>
             { siteConfig.title }
         </MainTitles>
+        <a 
+              href="/"
+            >
+              Regresar
+            </a>
+            <a 
+              href="/blog/1"
+            >
+                Blog Paginado
+            </a>
     </section>
 
     <section
         class="grid grid-cols-2 sm:grid-cols-2 gap-2"
     >
     <!-- AuthorCard  -->
-    <div class="max-w-lg mx-auto my-10 bg-white rounded-lg shadow-md p-5">
-        <img class="w-32 h-32 rounded-full mx-auto" src="https://picsum.photos/200" alt="Profile picture">
-        <h2 class="text-center text-2xl font-semibold mt-3">John Doe</h2>
-        <p class="text-center text-gray-600 mt-1">Software Engineer</p>
-        <div class="flex justify-center mt-5">
-          <a href="#" class="text-blue-500 hover:text-blue-700 mx-3">Twitter</a>
-          <a href="#" class="text-blue-500 hover:text-blue-700 mx-3">LinkedIn</a>
-          <a href="#" class="text-blue-500 hover:text-blue-700 mx-3">GitHub</a>
-        </div>
-        <div class="mt-5">
-          <h3 class="text-xl font-semibold">Bio</h3>
-          <p class="text-gray-600 mt-2">John is a software engineer with over 10 years of experience in developing web and mobile applications. He is skilled in JavaScript, React, and Node.js.</p>
-            <div 
-                class=" flex justify-emd"
-            >
-                <a href="">Leer más</a>
-            </div>  
-        </div>
-      </div>
+    {
+        authors.map(( author ) => (
+            <AuthorCard
+                author={author}
+            />
+        ))
+    }    
     </section>
 </MainLayout>
+<style is:global>
+    a {
+      @apply text-blue-500 mx-2 hover:underline;
+    }
+  </style>
