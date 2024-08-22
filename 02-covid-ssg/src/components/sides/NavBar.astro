@@ -1,0 +1,49 @@
+---
+import type { Targets } from '@Global';
+
+import Anchors from "@components/titles/Anchors.astro";
+
+interface Pages {
+    name:   string;
+    url:    string;
+    target: Targets;
+}
+
+const pages: Pages[] = [
+    {name: "Home",  url: "/",      target:"_self"},
+    {name: "About", url: "/about", target: "_self"},
+]
+
+const currentPath = Astro.url.pathname;
+
+---
+<nav
+    class="
+        shadow
+        max-w-max
+        bg-argentinianBlue
+        dark:bg-charcoal-250
+    "
+>
+    <div
+    class="ontainer flex items-center justify-center p-6 mx-auto"
+    >    
+        {
+            pages.map( ({ name, url, target}) => (
+                <div>
+                <Anchors name={name} href={url} target={target} />
+                {
+                    currentPath === url ?(
+                        <div 
+                        transition:name="menu-line"
+                        class ="border-b-2 border-blue-500 mx-4">
+                            </div>
+                        ) : (
+                            <div class="border-b-2 border-transparent"></div>
+                        )
+                    }
+            </div>
+        ))
+    }
+    </div>
+</nav>
