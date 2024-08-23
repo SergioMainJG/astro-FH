@@ -1,8 +1,6 @@
 ---
 import type { Targets } from '@Global';
 
-import Anchors from "@components/titles/Anchors.astro";
-
 interface Pages {
     name:   string;
     url:    string;
@@ -15,35 +13,35 @@ const pages: Pages[] = [
 ]
 
 const currentPath = Astro.url.pathname;
-
+console.log("🚀 ~ currentPath:", currentPath)
 ---
-<nav
-    class="
-        shadow
-        max-w-max
-        bg-argentinianBlue
-        dark:bg-charcoal-250
-    "
->
-    <div
-    class="ontainer flex items-center justify-center p-6 mx-auto"
-    >    
+<nav class="shadow bg-charcoal-500">
+    <div class="container flex items-center justify-center p-3 mx-auto text-gray-600 capitalize dark:text-gray-300">
         {
-            pages.map( ({ name, url, target}) => (
+            pages.map( ({name, target, url } ) =>(
                 <div>
-                <Anchors name={name} href={url} target={target} />
-                {
-                    currentPath === url ?(
-                        <div 
-                        transition:name="menu-line"
-                        class ="border-b-2 border-blue-500 mx-4">
+                    <a 
+                        href={ url } 
+                        target={ target }
+                        class="lg:text-xl lg:mx-6 md:text-x sm:mx-1.5  text-frenchBlue"
+                    >
+                        { name }
+                    </a>
+                    {
+                        currentPath === url
+                        ?(
+                            <div 
+                                transition:name="menu-line"
+                                class ="border-b-2 border-argentinianBlue mx-4">
                             </div>
-                        ) : (
-                            <div class="border-b-2 border-transparent"></div>
+                        )
+                        :(
+                            <div class="border-b-2 border-charcoal-500"></div>
                         )
                     }
-            </div>
-        ))
-    }
+
+                </div>
+            ))
+        }
     </div>
 </nav>

@@ -1,5 +1,6 @@
 ---
 import NavBar from '@components/sides/NavBar.astro';
+import { ViewTransitions } from 'astro:transitions';
 
 interface Props{
     title: string;
@@ -15,22 +16,15 @@ const { title } = Astro.props;
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{ title }</title>
+		<script type="module" src="https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@1.5.0/lite-youtube.js"></script>
+		<ViewTransitions /> 
 	</head>
 	<body
-		class="
-		flex flex-col
-		min-h-screen
-		bg-white 
-		dark:bg-richBlack-900"
+		class="font-sans flex flex-col min-h-screen bg-white dark:bg-richBlack-900"
 	>
 		<NavBar />
 		<main
-			class="
-			mt-10 mx-auto 
-			flex-grow 
-			w-full
-			max-w-4xl
-			px-4"
+			class="mt-10 mx-auto flex-grow w-full max-w-4xl px-4"
 		>
 			<slot />
 		</main>
