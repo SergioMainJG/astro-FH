@@ -1,0 +1,18 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "jsx": "preserve",
+    "baseUrl": ".",
+    "paths": {
+      //! Directorios
+      "@layouts/*":    ["src/layouts/*"],
+      "@components/*": ["src/components/*"],
+      "@pages/*":      ["src/pages/*"],
+      
+      //! Archivos
+      "@MainLayout": ["src/layouts/MainLayout.astro"],
+      "@Global":     ["src/utils/global.d.ts"],
+      "@SiteConfig":     ["src/utils/siteConfig.ts"],
+    }
+  }
+}

@@ -1,0 +1,47 @@
+---
+import type { Targets } from '@Global';
+
+interface Pages {
+    name:   string;
+    url:    string;
+    target: Targets;
+}
+
+const pages: Pages[] = [
+    {name: "Home",  url: "/",      target:"_self"},
+    {name: "About", url: "/about", target: "_self"},
+]
+
+const currentPath = Astro.url.pathname;
+console.log("🚀 ~ currentPath:", currentPath)
+---
+<nav class="shadow bg-charcoal-500">
+    <div class="container flex items-center justify-center p-3 mx-auto text-gray-600 capitalize dark:text-gray-300">
+        {
+            pages.map( ({name, target, url } ) =>(
+                <div>
+                    <a 
+                        href={ url } 
+                        target={ target }
+                        class="lg:text-xl lg:mx-6 md:text-x sm:mx-1.5  text-frenchBlue"
+                    >
+                        { name }
+                    </a>
+                    {
+                        currentPath === url
+                        ?(
+                            <div 
+                                transition:name="menu-line"
+                                class ="border-b-2 border-argentinianBlue mx-4">
+                            </div>
+                        )
+                        :(
+                            <div class="border-b-2 border-charcoal-500"></div>
+                        )
+                    }
+
+                </div>
+            ))
+        }
+    </div>
+</nav>
