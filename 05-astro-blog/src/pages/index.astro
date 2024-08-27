@@ -1,0 +1,38 @@
+---
+import MainLayout from "@MainLayout";
+import MainTitles from "@components/MainTitles.astro";
+import Paragraphs from "@components/Paragraphs.astro";
+
+import { siteConfig } from "@SiteConfig";
+import { getCollection } from "astro:content";
+import TypeBlogPost from "@components/TypeBlogPost.astro";
+
+const blogPosts = await getCollection(
+    'blog',
+    ( post ) => post.data.isDraft === false
+    );
+---
+<MainLayout title="Sergio's Blog">
+    <!-- component -->
+<section class="bg-gray-900">
+    <div class="container px-6 py-10 mx-auto">
+        <MainTitles>{ siteConfig.title }</MainTitles>
+        <Paragraphs>{ siteConfig.description }</Paragraphs>
+
+        <a class="mr-2"href="/blog/1"> Blog páginado</a>
+        <a class="mr-2"href="/authors"> Autores </a>
+
+        <div class="grid grid-cols-1 gap-8 mt-8 md:mt-16 md:grid-cols-2">
+            {
+                blogPosts.map( (post) => <TypeBlogPost post= {post}/> )
+            }
+        </div> 
+    </div>
+</section>
+</MainLayout>
+
+<style>
+    a {
+      @apply  text-blue-500 hover:underline;
+    }
+  </style>
